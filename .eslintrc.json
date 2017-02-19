@@ -1,14 +1,13 @@
 {
   "env": {
+    "browser": true,
     "node": true
   },
   "extends": [
     "nrk",
-    "eslint:recommended",
-    "plugin:inferno/recommended"
-  ],
-  "plugins": [
-    "inferno"
+    "nrk/rules/react",
+    "nrk/rules/jsx",
+    "eslint:recommended"
   ],
   "parserOptions": {
     "ecmaFeatures": {
@@ -17,8 +16,6 @@
   },
   "parser": "babel-eslint",
   "rules": {
-    "comma-dangle": "off",
-    "inferno/prop-types": "off",
-    "no-undef": "off"
+    "comma-dangle": "off"
   }
 }
