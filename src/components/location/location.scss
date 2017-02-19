@@ -1,0 +1,27 @@
+.header {
+  min-height: 50px;
+  background-color: #1EAEDB;
+}
+
+.map-container {
+  width: 100%;
+}
+
+.map-container-overlay {
+  display: block;
+}
+
+.map-container-hidden {
+  display: none;
+}
+
+.map-container iframe {
+  display: block;
+  width: 100%;
+  position: relative; /* IE needs a position other than static */
+  pointer-events: none;
+}
+
+.map-container iframe.clicked {
+  pointer-events: auto;
+}
