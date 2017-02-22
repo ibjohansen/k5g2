@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import * as firebase from 'firebase';
+import {objectToArray} from '../../utils';
 
 class Contacts extends Component {
 
@@ -10,8 +11,8 @@ class Contacts extends Component {
   }
 
   renderContacts(contacts) {
-    return Object.keys(contacts).map((key, idx) => {
-      const contact = contacts[key];
+    const list = objectToArray(contacts);
+    return list.map((contact, idx) => {
       return (
         <div className="one-half column contact" key={idx}>
           <div className="one-half column">

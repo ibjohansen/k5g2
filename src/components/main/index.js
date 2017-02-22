@@ -7,6 +7,7 @@ import * as images from '../../images';
 import Header from '../header';
 import Location from '../location';
 import Contacts from '../contacts';
+import List from '../list';
 
 var config = {
   apiKey: "AIzaSyAGZ8LWiZ480DFqnh9JzCUN0NY-2Pe1HUc",
@@ -22,7 +23,8 @@ class MainPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      contacts: null
+      contacts: null,
+      lists: null
     };
   }
 
@@ -33,15 +35,32 @@ class MainPage extends Component {
     });
   };
 
+  getLists() {
+    const db = firebase.database();
+    return db.ref('/lists').once('value').then((snapshot) => {
+      return snapshot.val();
+    });
+  };
+
   componentWillMount() {
     this.getContacts().then((contacts) => this.setState({contacts}));
+    this.getLists().then((lists) => this.setState({lists}));
   }
 
   render() {
     const contacts = this.state.contacts;
+    const lists = this.state.lists;
     return (
       <div>
         <div className="section tak"></div>
+
+        <div className="section">
+          <div className="container">
+            <div className="row">
+              {contacts && <List listObject={lists}/>}
+            </div>
+          </div>
+        </div>
 
         <div className="section">
           <div className="container">
