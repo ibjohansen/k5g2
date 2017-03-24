@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import * as firebase from 'firebase';
-import {objectToArray} from '../../utils';
+import {nodeToArray} from '../../utils';
 
 class List extends Component {
 
@@ -19,21 +19,20 @@ class List extends Component {
   }
 
   renderDetails(list) {
-    const items = objectToArray(list);
+    const items = nodeToArray(list);
     return (
       <div className="items">{this.renderList(items)}</div>
     )
   }
 
   renderList(list) {
+    const renderDetails = this.state.renderDetails;
     return list.map((item, idx) => {
       return (
-        <div className="one-half column list" key={idx}>
-          <div className="one-half column">
-            <div
-              onClick={this.handleToggleDetails}
-              className="details u-pull-left">{item.name}
-            </div>
+        <div className="column list" key={idx}>
+          <div onClick={this.handleToggleDetails} className="u-pull-left">
+            {item.name}
+            {renderDetails && this.renderDetails(list[0].items)}
           </div>
         </div>
       )
@@ -42,14 +41,8 @@ class List extends Component {
 
   render() {
     const {listObject = {}} = this.props;
-    const renderDetails = this.state.renderDetails;
-    const list = objectToArray(listObject);
-    return (
-      <div>
-        <div className="list">{this.renderList(list)}</div>
-        {renderDetails && this.renderDetails(list[0].items)}
-      </div>
-    )
+    const list = nodeToArray(listObject);
+    return ( <div className="list">{this.renderList(list)}</div> )
   }
 }
 

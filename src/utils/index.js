@@ -1,4 +1,4 @@
-export const objectToArray = (obj) => {
+export const nodeToArray = (obj) => {
   if (!obj || Object.keys(obj).length === 0) {
     return [];
   }

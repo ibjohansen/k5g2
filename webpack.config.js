@@ -12,7 +12,21 @@ const config = {
   devtool: 'inline-source-map',
   devServer: {
     compress: true,
-    port: 9000
+    port: 9000,
+    setup(app){
+      app.get('/main', (req, res) => {
+        res.redirect('/#main');
+      });
+
+      app.get('/lists', (req, res) => {
+        res.redirect('/#lists');
+      });
+
+      //app.get(/^\/(?!#.*).+/, (req, res) => {
+      //  res.send('/#lists');
+      //});
+
+    }
   },
   module: {
     loaders: [

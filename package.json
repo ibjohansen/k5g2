@@ -7,14 +7,14 @@
     "start": "yarn build",
     "copy:static": "cp ./index.html ./build",
     "build": "yarn copy:static && webpack",
-    "start:dev": "yarn copy:static &&  webpack-dev-server --progress --watch",
+    "start:dev": "yarn copy:static && webpack-dev-server --progress --watch",
     "lint": "eslint --ext=.js,.jsx ./src/**/*",
     "test": "mocha --compilers js:babel-core/register ./tests/**/*  --watch"
   },
   "author": "Ib Johansen",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.14.1",
+    "express": "^4.15.2",
     "firebase": "^3.6.9",
     "firebaseui": "^1.0.0",
     "path": "^0.12.7",
